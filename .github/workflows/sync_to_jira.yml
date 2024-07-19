@@ -1,0 +1,16 @@
+# This is a basic workflow to help you get started with Actions
+
+name: CI
+
+# Controls when the workflow will run
+on: [issues, issue_comment]
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  sync-issues:
+    name: Sync issues to Jira
+    runs-on: ubuntu-latest
+    steps:
+      - uses: canonical/sync-issues-github-jira@v1
+        with:
+          webhook-url: ${{ secrets.JIRA_WEBHOOK_URL }}
